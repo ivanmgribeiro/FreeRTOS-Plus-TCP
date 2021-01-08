@@ -1152,6 +1152,12 @@ BaseType_t FreeRTOS_IPInit( const uint8_t ucIPAddress[ ipIP_ADDRESS_LENGTH_BYTES
          * pucEthernetBuffer to store a pointer. */
         configASSERT( ipconfigBUFFER_PADDING == 14 );
     }
+    else if( sizeof( uintptr_t ) == 16 )
+    {
+        /* This is a CHERI-128 platform, make sure there is enough space in
+         * pucEthernetBuffer to store a pointer. */
+        configASSERT( ipconfigBUFFER_PADDING == 22 );
+    }
 
     #ifndef _lint
         {
