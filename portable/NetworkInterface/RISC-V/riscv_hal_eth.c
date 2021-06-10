@@ -479,15 +479,19 @@ int DmaSetup(XAxiDma *DmaInstancePtr, u16 AxiDmaDeviceId)
 
         #ifdef __CHERI_PURE_CAPABILITY__
             RxFrameBufRef = cheri_build_data_cap(RX_FRAME_BUF_ADDR, sizeof(EthernetFrame)*RXBD_CNT,
+                               __CHERI_CAP_PERMISSION_GLOBAL__ |
                                __CHERI_CAP_PERMISSION_PERMIT_LOAD__ |
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
             TxFrameBufRef = cheri_build_data_cap(TX_FRAME_BUF_ADDR, sizeof(EthernetFrame)*TXBD_CNT,
+                               __CHERI_CAP_PERMISSION_GLOBAL__ |
                                __CHERI_CAP_PERMISSION_PERMIT_LOAD__ |
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
             RxBdSpaceRef = cheri_build_data_cap(RXBD_SPACE_ADDR, RXBD_SPACE_BYTES,
+                               __CHERI_CAP_PERMISSION_GLOBAL__ |
                                __CHERI_CAP_PERMISSION_PERMIT_LOAD__ |
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
             TxBdSpaceRef = cheri_build_data_cap(TXBD_SPACE_ADDR, TXBD_SPACE_BYTES,
+                               __CHERI_CAP_PERMISSION_GLOBAL__ |
                                __CHERI_CAP_PERMISSION_PERMIT_LOAD__ |
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
         #else
