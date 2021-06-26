@@ -40,7 +40,10 @@
 #include <rtl/rtl-freertos-compartments.h>
 
 void CheriFreeRTOS_FaultHandler(void* pvParameter1, uint32_t comp_id) {
+
+#if configCHERI_COMPARTMENTALIZATION
   rtl_cherifreertos_compartment_revoke_resources(comp_id);
+#endif
 
   void* obj = dlopen("FreeRTOS_IP.c.8.o", RTLD_GLOBAL | RTLD_NOW);
   if (obj != NULL) {
