@@ -109,7 +109,7 @@ BaseType_t xNetworkInterfaceOutput( NetworkBufferDescriptor_t * const pxNetworkB
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
 #endif
-	XAxiDma_BdSetBufAddr(BdPtr,(u32)xTxBuffer);
+	XAxiDma_BdSetBufAddr(BdPtr,xTxBuffer);
 	XAxiDma_BdSetLength(BdPtr, pxNetworkBuffer->xDataLength, TxRingPtr->MaxTransferLen);
 	XAxiDma_BdSetCtrl(BdPtr, XAXIDMA_BD_CTRL_TXSOF_MASK |
 			     XAXIDMA_BD_CTRL_TXEOF_MASK);
