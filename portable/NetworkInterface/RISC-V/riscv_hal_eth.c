@@ -488,10 +488,18 @@ int DmaSetup(XAxiDma *DmaInstancePtr, u16 AxiDmaDeviceId)
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
             RxBdSpaceRef = cheri_build_data_cap(RXBD_SPACE_ADDR, RXBD_SPACE_BYTES,
                                __CHERI_CAP_PERMISSION_GLOBAL__ |
+                               #ifdef _CAP_HW_
+                               __CHERI_CAP_PERMISSION_PERMIT_LOAD_CAPABILITY__ |
+                               __CHERI_CAP_PERMISSION_PERMIT_STORE_CAPABILITY__ |
+                               #endif // _CAP_HW_
                                __CHERI_CAP_PERMISSION_PERMIT_LOAD__ |
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
             TxBdSpaceRef = cheri_build_data_cap(TXBD_SPACE_ADDR, TXBD_SPACE_BYTES,
                                __CHERI_CAP_PERMISSION_GLOBAL__ |
+                               #ifdef _CAP_HW_
+                               __CHERI_CAP_PERMISSION_PERMIT_LOAD_CAPABILITY__ |
+                               __CHERI_CAP_PERMISSION_PERMIT_STORE_CAPABILITY__ |
+                               #endif // _CAP_HW_
                                __CHERI_CAP_PERMISSION_PERMIT_LOAD__ |
                                __CHERI_CAP_PERMISSION_PERMIT_STORE__);
         #else
